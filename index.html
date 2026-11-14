@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="it" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trattoria da Mario | Ristorante Siciliano a Catania</title>
+<meta name="description" content="Trattoria da Mario - Autentica cucina siciliana nel cuore di Catania. Via Crociferi 29. Prenota ora!">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', 'Times New Roman', serif; }
+  body { background: #faf6ef; color: #2b1d12; line-height: 1.6; }
+
+  /* NAVBAR */
+  nav { position: fixed; top: 0; width: 100%; background: rgba(43,29,18,0.97); backdrop-filter: blur(8px); z-index: 1000; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+  nav .logo { font-size: 24px; font-weight: bold; color: #d4a843; letter-spacing: 1px; }
+  nav ul { display: flex; gap: 30px; list-style: none; }
+  nav ul li a { color: #faf6ef; text-decoration: none; font-size: 15px; transition: color .3s; font-family: Arial, sans-serif; }
+  nav ul li a:hover { color: #d4a843; }
+  .burger { display: none; font-size: 28px; cursor: pointer; color: #d4a843; }
+
+  /* HERO */
+  .hero { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(rgba(20,12,5,.55), rgba(20,12,5,.75)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600') center/cover; padding: 0 20px; color: #fff; }
+  .hero .badge { background: #d4a843; color: #2b1d12; padding: 6px 18px; border-radius: 30px; font-size: 14px; font-weight: bold; margin-bottom: 20px; font-family: Arial, sans-serif; }
+  .hero h1 { font-size: 56px; margin-bottom: 10px; }
+  .hero .sub { font-size: 20px; color: #e8d9c0; margin-bottom: 10px; font-style: italic; }
+  .hero .stars { color: #d4a843; font-size: 20px; margin-bottom: 25px; font-family: Arial, sans-serif; }
+  .hero .stars span { color: #e8d9c0; font-size: 16px; margin-right: 6px; }
+
+  .btn-row { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px; text-decoration: none; border-radius: 50px; font-weight: bold; font-size: 16px; transition: transform .2s; font-family: Arial, sans-serif; }
+  .btn:hover { transform: scale(1.05); }
+  .btn-call { background: #2e7d32; color: #fff; box-shadow: 0 5px 20px rgba(46,125,50,.5); }
+  .btn-gold { background: #d4a843; color: #2b1d12; box-shadow: 0 5px 20px rgba(212,168,67,.4); }
+
+  /* SECTIONS */
+  section { padding: 90px 8%; }
+  .section-title { text-align: center; font-size: 38px; color: #2b1d12; margin-bottom: 15px; }
+  .section-sub { text-align: center; color: #8a6d4a; font-family: Arial, sans-serif; margin-bottom: 50px; font-size: 16px; }
+
+  /* ABOUT */
+  .about { display: flex; align-items: center; gap: 50px; flex-wrap: wrap; }
+  .about img { flex: 1; min-width: 300px; border-radius: 15px; width: 100%; }
+  .about-text { flex: 1; min-width: 300px; }
+  .about-text p { color: #4a3826; font-size: 17px; margin-bottom: 15px; font-family: Arial, sans-serif; }
+  .info-box { background: #2b1d12; color: #faf6ef; padding: 20px 25px; border-radius: 12px; margin-top: 20px; font-family: Arial, sans-serif; }
+  .info-box div { margin-bottom: 8px; font-size: 15px; }
+  .info-box b { color: #d4a843; }
+
+  /* MENU */
+  .menu-section { background: #2b1d12; color: #faf6ef; }
+  .menu-section .section-title, .menu-section .section-sub { color: #faf6ef; }
+  .menu-section .section-sub { color: #c9a97a; }
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 25px; }
+  .menu-card { background: #3a2817; padding: 28px; border-radius: 15px; border: 1px solid #d4a84333; transition: transform .3s, border-color .3s; }
+  .menu-card:hover { transform: translateY(-8px); border-color: #d4a843; }
+  .menu-card .tag { color: #d4a843; font-size: 12px; font-weight: bold; text-transform: uppercase; font-family: Arial, sans-serif; letter-spacing: 1px; }
+  .menu-card h3 { margin: 10px 0; font-size: 21px; }
+  .menu-card p { color: #c9a97a; font-size: 15px; font-family: Arial, sans-serif; }
+
+  /* GALLERY */
+  .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 15px; }
+  .gallery-grid img { width: 100%; height: 230px; object-fit: cover; border-radius: 10px; transition: transform .3s; }
+  .gallery-grid img:hover { transform: scale(1.03); }
+
+  /* REVIEWS */
+  .review-header { text-align: center; margin-bottom: 50px; }
+  .review-score { font-size: 60px; color: #d4a843; font-weight: bold; font-family: Arial, sans-serif; }
+  .review-score .stars { font-size: 24px; display: block; margin: 5px 0; }
+  .review-score .count { color: #8a6d4a; font-size: 16px; font-family: Arial, sans-serif; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 25px; }
+  .testi-card { background: #fff; padding: 25px; border-radius: 15px; border-right: 4px solid #d4a843; box-shadow: 0 3px 15px rgba(0,0,0,.05); font-family: Arial, sans-serif; }
+  .testi-card .stars { color: #d4a843; margin-bottom: 10px; }
+  .testi-card p { color: #4a3826; font-size: 15px; margin-bottom: 10px; }
+  .testi-card b { font-size: 14px; color: #8a6d4a; }
+
+  /* CONTACT */
+  .contact-wrap { display: flex; gap: 40px; flex-wrap: wrap; }
+  .contact-info { flex: 1; min-width: 280px; font-family: Arial, sans-serif; }
+  .contact-info .item { margin-bottom: 20px; font-size: 16px; }
+  .contact-info .item b { color: #8a6d4a; display: block; font-size: 13px; text-transform: uppercase; margin-bottom: 3px; }
+  .map-frame { flex: 1; min-width: 280px; height: 380px; border-radius: 15px; overflow: hidden; }
+  .map-frame iframe { width: 100%; height: 100%; border: 0; }
+
+  footer { text-align: center; padding: 30px; background: #1a110a; color: #8a6d4a; font-size: 14px; font-family: Arial, sans-serif; }
+
+  .call-float { position: fixed; bottom: 25px; left: 25px; background: #2e7d32; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 999; box-shadow: 0 5px 20px rgba(0,0,0,.4); text-decoration: none; font-size: 26px; }
+
+  @media (max-width: 768px) {
+    nav ul { position: fixed; top: 60px; right: -100%; flex-direction: column; background: #2b1d12; width: 70%; height: 100vh; padding: 40px 20px; transition: right .3s; }
+    nav ul.active { right: 0; }
+    .burger { display: block; }
+    .hero h1 { font-size: 36px; }
+    .about { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🍝 Trattoria da Mario</div>
+  <ul id="navLinks">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">Chi Siamo</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#gallery">Foto</a></li>
+    <li><a href="#reviews">Recensioni</a></li>
+    <li><a href="#contact">Contatti</a></li>
+  </ul>
+  <div class="burger" onclick="document.getElementById('navLinks').classList.toggle('active')">☰</div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="badge">RISTORANTE SICILIANO · CATANIA</div>
+  <h1>Trattoria da Mario</h1>
+  <p class="sub">Cucina siciliana autentica nel cuore del centro storico</p>
+  <div class="stars">★★★★☆ <span>4,5 su Google · 3.458 recensioni</span></div>
+  <div class="btn-row">
+    <a href="tel:+393451247250" class="btn btn-call">📞 Chiama Ora</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Trattoria+da+Mario+Via+Crociferi+29+Catania" target="_blank" class="btn btn-gold">📍 Indicazioni Stradali</a>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="section-title">Chi Siamo</h2>
+  <p class="section-sub">Tradizione, sapore e ospitalità siciliana dal 1965</p>
+  <div class="about">
+    <img src="https://images.unsplash.com/photo-1592861956120-e524fc739696?w=800" alt="Trattoria da Mario interno">
+    <div class="about-text">
+      <p>Da generazioni portiamo in tavola i sapori autentici della Sicilia: antipasti della casa, carni alla griglia e piatti della tradizione preparati con ingredienti freschi e di stagione.</p>
+      <p>Nel cuore di Catania, offriamo un'esperienza di convivialità con un rapporto qualità-prezzo tra i più apprezzati della città (10–20€ a persona).</p>
+      <div class="info-box">
+        <div>🕐 <b>Orari:</b> Aperto tutti i giorni dalle 19:00</div>
+        <div>🍽️ <b>Servizi:</b> Pranzo/Cena in loco · Da Asporto · Consegna a domicilio</div>
+        <div>💶 <b>Prezzo medio:</b> 10–20€ a persona</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="menu-section">
+  <h2 class="section-title">I Nostri Piatti</h2>
+  <p class="section-sub">I piatti più amati dai nostri clienti</p>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="tag">Antipasto</div>
+      <h3>Antipasto della Casa</h3>
+      <p>Selezione di specialità siciliane: caponata, salumi e formaggi locali</p>
+    </div>
+    <div class="menu-card">
+      <div class="tag">Secondo</div>
+      <h3>Carne alla Griglia (Churrasco)</h3>
+      <p>Tagli di carne grigliati alla brace, serviti con contorni di stagione</p>
+    </div>
+    <div class="menu-card">
+      <div class="tag">Tradizione</div>
+      <h3>Caponata Siciliana</h3>
+      <p>Il classico piatto agrodolce di melanzane, sedano e olive</p>
+    </div>
+    <div class="menu-card">
+      <div class="tag">Dolce</div>
+      <h3>Ricotta e Pistacchio</h3>
+      <p>Dolce tipico siciliano a base di ricotta fresca e pistacchio di Sicilia</p>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <h2 class="section-title">Galleria</h2>
+  <p class="section-sub">Un assaggio della nostra cucina e della nostra atmosfera</p>
+  <div class="gallery-grid">
+    <img src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?w=500" alt="Piatto siciliano">
+    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=500" alt="Antipasto">
+    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500" alt="Ristorante atmosfera">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500" alt="Vino rosso siciliano">
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="review-header">
+    <div class="review-score">4,5</div>
+    <div class="stars">★★★★☆</div>
+    <div class="count">basato su 3.458 recensioni Google</div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>Esperienza di cucina catanese autentica: tanto cibo e ogni piatto pieno di sapore, con un servizio davvero ottimo.</p>
+      <b>— Cliente Google, Local Guide</b>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>Buona esperienza con un gruppo di 5 persone: quantità di cibo sorprendente per il prezzo, tra i migliori rapporti qualità-prezzo della zona.</p>
+      <b>— Cliente Google, Local Guide</b>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p>Cena perfetta: antipasti con tanti sapori siciliani diversi e un secondo di carne eccellente.</p>
+      <b>— Cliente Google</b>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">Contatti & Prenotazioni</h2>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <div class="item"><b>Indirizzo</b>Via Crociferi, 29, 95125 Catania CT, Italia</div>
+      <div class="item"><b>Telefono</b><a href="tel:+393451247250" style="color:#2b1d12;">+39 345 124 7250</a></div>
+      <div class="item"><b>Orari</b>Tutti i giorni dalle 19:00</div>
+      <div class="item"><b>Servizi</b>Pranzo/Cena in loco · Asporto · Consegna a domicilio</div>
+      <div class="item"><b>Recensioni</b><a href="https://www.google.com/maps/search/?api=1&query=Trattoria+da+Mario+Via+Crociferi+29+Catania" target="_blank" style="color:#2b1d12;">⭐ Lascia una recensione su Google</a></div>
+    </div>
+    <div class="map-frame">
+      <iframe src="https://maps.google.com/maps?q=Via+Crociferi,29,95125+Catania+CT,Italia&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+</section>
+
+<a href="tel:+393451247250" class="call-float">📞</a>
+
+<footer>
+  © 2026 Trattoria da Mario — Via Crociferi, 29, Catania | Tutti i diritti riservati
+</footer>
+
+</body>
+</html>
